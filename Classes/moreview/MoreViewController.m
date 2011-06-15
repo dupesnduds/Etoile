@@ -1,10 +1,11 @@
 //
-//  FlipsideViewController.m
+//  MoreViewController.m
 //  etoile
 //
-//  Created by mtt on 7/06/09.
-//  Copyright Make Things Talk 2009. All rights reserved.
+//  Created by Cleave Pokotea on 7/06/09.
+//  Copyright Tumunu 2009 - 2011. All rights reserved.
 //
+
 
 #import "MoreViewController.h"
 #import "etoileAppDelegate.h"
@@ -22,15 +23,18 @@
 @synthesize btnMtt;
 @synthesize switchViewTo;
 
-- (void)dealloc {
-    if(webView) {
+- (void)dealloc 
+{
+    if(webView) 
+    {
         [webView release];
     }
     
     [super dealloc];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad 
+{
     [super viewDidLoad];  
     
     [webView setBackgroundColor:[UIColor clearColor]];
@@ -41,20 +45,23 @@
 }
 
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+{
     // Return YES for supported orientations
     //return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
     return NO;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning 
+{
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewWillAppear:(BOOL)animated; {
+- (void)viewWillAppear:(BOOL)animated
+{
     // First rotate the screen:
     [UIApplication sharedApplication].statusBarOrientation = UIInterfaceOrientationLandscapeLeft;
     // Then rotate the view and re-align it:
@@ -63,18 +70,16 @@
     [self.view setTransform:landscapeTransform];
 }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
+- (void)viewDidUnload {}
 
-- (void)showMain {
-    
+- (void)showMain 
+{
     self.switchViewTo = 1;
     [self switchView];
 }
 
-- (void)setBackground {
+- (void)setBackground 
+{
 	LOG_CURRENT_METHOD;
     
     // Title bar
@@ -93,14 +98,16 @@
 	[self.view sendSubviewToBack:background];
 }
 
-- (void)setSubviewItems {
+- (void)setSubviewItems 
+{
     LOG_CURRENT_METHOD;
     
     [self setButtons];
     [self loadAbout];
 }
 
-- (void)setButtons {
+- (void)setButtons 
+{
     LOG_CURRENT_METHOD;
     
     // Main
@@ -138,7 +145,8 @@
     [btnMtt setEnabled:YES];
 }
 
-- (void)switchView {
+- (void)switchView 
+{
     LOG_CURRENT_METHOD;
     
     MainViewController *tmvc = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
@@ -153,7 +161,8 @@
 	[animation setDuration:0.85];
 	[animation setType:kCATransitionReveal];
     
-    switch(self.switchViewTo) {
+    switch(self.switchViewTo) 
+    {
         case 1:
             [animation setSubtype:kCATransitionFromTop];
             [theWindow addSubview:[mavc view]];
@@ -164,7 +173,8 @@
 	[[theWindow layer] addAnimation:animation forKey:@"swap"];    
 }
 
--(void)loadAbout {
+-(void)loadAbout 
+{
     LOG_CURRENT_METHOD;
     
     NSString *helpPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"www"];
@@ -172,7 +182,8 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:helpURL]];
 }
 
-- (void)loadMtt {
+- (void)loadMtt 
+{
     LOG_CURRENT_METHOD;
     
     NSString *helpPath = [[NSBundle mainBundle] pathForResource:@"mtt" ofType:@"html" inDirectory:@"www"];
@@ -180,7 +191,8 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:helpURL]];
 }
 
-- (void)loadProducts {
+- (void)loadProducts 
+{
     LOG_CURRENT_METHOD;
     
     NSString *helpPath = [[NSBundle mainBundle] pathForResource:@"products" ofType:@"html" inDirectory:@"www"];
@@ -188,7 +200,8 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:helpURL]];
 }
 
-- (void)loadNetworkError {
+- (void)loadNetworkError 
+{
     LOG_CURRENT_METHOD;
     
     NSString *helpPath = [[NSBundle mainBundle] pathForResource:@"network" ofType:@"html" inDirectory:@"www"];

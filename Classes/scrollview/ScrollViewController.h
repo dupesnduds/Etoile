@@ -2,15 +2,18 @@
 //  ScrollViewController.h
 //  etoile
 //
-//  Created by mtt on 8/06/09.
+//  Created by Cleave Pokotea on 8/06/09.
 //  Copyright 2009 Make Things Talk. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
+
 
 @class MainViewController;
 
-@interface ScrollViewController : UIViewController {
+@interface ScrollViewController : UIViewController 
+{
     
     MainViewController *mavc;
 
@@ -37,12 +40,11 @@
 //@property (nonatomic, retain) CATransition *animation;
 
 - (void)showMain;
-
 - (void)setBackground;
 - (void)setSubviewItems;
 - (void)setButtons;
 - (void)setScrollView;
-
 - (void)switchView;
+
 
 @end

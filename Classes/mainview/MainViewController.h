@@ -2,17 +2,19 @@
 //  MainViewController.h
 //  etoile
 //
-//  Created by mtt on 7/06/09.
-//  Copyright Make Things Talk 2009. All rights reserved.
+//  Created by Cleave Pokotea on 7/06/09.
+//  Copyright Tumunu 2009 - 2011. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
+
 
 @class MoreViewController;
 @class ScrollViewController;
 
-@interface MainViewController : UIViewController <UITextViewDelegate> {
-    
+@interface MainViewController : UIViewController <UITextViewDelegate> 
+{
     MoreViewController *movc;
     ScrollViewController *svc;
     
@@ -34,6 +36,7 @@
     BOOL showKeyboard;
 }
 
+
 @property (nonatomic, retain) MoreViewController *movc;
 @property (nonatomic, retain) ScrollViewController *svc;
 @property (nonatomic, retain) UIImageView *background;
@@ -50,17 +53,17 @@
 @property (nonatomic, retain) UIButton *btnInfo;
 @property (nonatomic) int switchViewTo;
 
+
 - (void)showInfo;
 - (void)showScroll;
 - (void)toggleKeyboard;
 - (void)fontPlus;
 - (void)fontMinus;
-
 - (void)setBackground;
 - (void)setSubviewItems;
 - (void)setTextView;
 - (void)setButtons;
-
 - (void)switchView;
+
 
 @end

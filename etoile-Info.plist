@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
 	<string>etoile_57.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>nz.co.makethingstalk.etoile</string>
+	<string>com.tumunu.etoile</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

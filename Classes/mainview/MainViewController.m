@@ -2,9 +2,10 @@
 //  MainViewController.m
 //  etoile
 //
-//  Created by mtt on 7/06/09.
-//  Copyright Make Things Talk 2009. All rights reserved.
+//  Created by Cleave Pokotea on 7/06/09.
+//  Copyright Tumunu 2009 - 2011. All rights reserved.
 //
+
 
 #import "MainViewController.h"
 #import "etoileAppDelegate.h"
@@ -14,6 +15,7 @@
 
 
 @implementation MainViewController
+
 
 @synthesize movc;
 @synthesize svc;
@@ -28,9 +30,11 @@
 @synthesize btnInfo;
 @synthesize switchViewTo;
 
-- (void)dealloc {
+- (void)dealloc 
+{
     /*
-    if(movc) {
+    if(movc) 
+    {
         [movc release];
     }
      */
@@ -39,12 +43,16 @@
 }
 
  // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
+- (void)viewDidLoad 
+{
     [super viewDidLoad];
      
-    if([etoileAppDelegate get].fontSize != 0) {
+    if([etoileAppDelegate get].fontSize != 0) 
+    {
         fontSize = [etoileAppDelegate get].fontSize;
-    } else {
+    } 
+    else 
+    {
         fontSize = 30;
     }
      showKeyboard = NO;
@@ -54,19 +62,22 @@
 }
 
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+{
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning 
+{
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewWillAppear:(BOOL)animated; {
+- (void)viewWillAppear:(BOOL)animated; 
+{
     // First rotate the screen:
     [UIApplication sharedApplication].statusBarOrientation = UIInterfaceOrientationLandscapeLeft;
     // Then rotate the view and re-align it:
@@ -75,48 +86,54 @@
     [self.view setTransform:landscapeTransform];
 }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
+- (void)viewDidUnload {}
 
-- (void)showInfo {    
-	
+- (void)showInfo 
+{    
 	self.switchViewTo = 1;
     [self switchView];
 }
 
-- (void)showScroll {
-    
+- (void)showScroll 
+{
     self.switchViewTo = 2;
     [self switchView];
 }
 
-- (void)toggleKeyboard {
+- (void)toggleKeyboard 
+{
     LOG_CURRENT_METHOD;
     
-    if(showKeyboard) {
+    if(showKeyboard) 
+    {
         [content becomeFirstResponder];
-    } else {
+    } 
+    else 
+    {
         
         [content resignFirstResponder];
     }
 }
 
 
-- (void)fontPlus {
+- (void)fontPlus 
+{
     LOG_CURRENT_METHOD;
     
-    if(fontSize > 10 && !btnMinus.enabled) {
+    if(fontSize > 10 && !btnMinus.enabled) 
+    {
         [btnMinus setEnabled:YES];            
     }
     
-    if(fontSize < 149) {
-        if(!btnPlus.enabled) {
+    if(fontSize < 149) 
+    {
+        if(!btnPlus.enabled) 
+        {
             [btnPlus setEnabled:YES];            
         }
         
-        if(!btnPlus.enabled) {
+        if(!btnPlus.enabled) 
+        {
             [btnPlus setEnabled:YES];            
         }
         
@@ -124,20 +141,26 @@
         fontSize = fontSize + 10;
         content.font = [UIFont systemFontOfSize:fontSize];
         [etoileAppDelegate get].fontSize = fontSize;
-    } else {
+    } 
+    else 
+    {
         [btnPlus setEnabled:NO];
     }
 }
 
-- (void)fontMinus {
+- (void)fontMinus 
+{
     LOG_CURRENT_METHOD;
     
-    if(fontSize < 149 && !btnPlus.enabled) {
+    if(fontSize < 149 && !btnPlus.enabled) 
+    {
         [btnPlus setEnabled:YES];            
     }
     
-    if(fontSize > 10) {
-        if(!btnMinus.enabled) {
+    if(fontSize > 10) 
+    {
+        if(!btnMinus.enabled) 
+        {
             [btnMinus setEnabled:YES];            
         }
         
@@ -145,12 +168,15 @@
         fontSize = fontSize - 10;
         content.font = [UIFont systemFontOfSize:fontSize];
         [etoileAppDelegate get].fontSize = fontSize;
-    } else {
+    } 
+    else 
+    {
         [btnMinus setEnabled:NO];
     }
 }
 
-- (void)setBackground {
+- (void)setBackground 
+{
 	LOG_CURRENT_METHOD;
     
     // Title bar
@@ -177,16 +203,16 @@
      */
 }
 
-- (void)setSubviewItems {
+- (void)setSubviewItems 
+{
     LOG_CURRENT_METHOD;
     
     [self setTextView];
     [self setButtons];
-    
-    
 }
 
-- (void)setTextView {
+- (void)setTextView 
+{
     LOG_CURRENT_METHOD;
     
     content = [[UITextView alloc] initWithFrame:CGRectMake(0, 51, 480, 249)];
@@ -200,12 +226,14 @@
     [self.view addSubview:content];   
     
     LOG(@"Content text:%@", [etoileAppDelegate get].lblMessage);
-    if([[etoileAppDelegate get].lblMessage length] != 0) {
+    if([[etoileAppDelegate get].lblMessage length] != 0) 
+    {
         content.text = [etoileAppDelegate get].lblMessage;
     }
 }
 
-- (void)setButtons {
+- (void)setButtons 
+{
     LOG_CURRENT_METHOD;
     
     // Scroll
@@ -277,14 +305,17 @@
     [btnPlus setEnabled:NO];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)thetextField {
+- (BOOL)textFieldShouldReturn:(UITextField *)thetextField 
+{
     [content resignFirstResponder];
     return YES;
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text 
+{
 	//if([text isEqualToString:@"\n"])
-	if([text isEqualToString:@"^"]) {
+	if([text isEqualToString:@"^"]) 
+    {
         
 		[textView resignFirstResponder];
 		return NO;
@@ -292,7 +323,8 @@
 	return YES;
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView {
+- (void)textViewDidBeginEditing:(UITextView *)textView 
+{
     LOG_CURRENT_METHOD;
     
     [textView scrollRangeToVisible:NSMakeRange([textView.text length], 0)];
@@ -318,7 +350,8 @@
     [btnPlus setEnabled:NO];
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView {
+- (void)textViewDidEndEditing:(UITextView *)textView 
+{
     LOG_CURRENT_METHOD;
     
     [etoileAppDelegate get].lblMessage = textView.text;
@@ -339,9 +372,12 @@
     [aaa setEnabled:YES];
     [btnInfo setEnabled:YES];
     
-    if(textView.hasText) {
+    if(textView.hasText) 
+    {
         [btnScroll setEnabled:YES];
-    }else {
+    }
+    else
+    {
         [btnScroll setEnabled:NO];
     }
     
@@ -349,7 +385,8 @@
     [btnPlus setEnabled:YES];
 }
 
-- (void)switchView {
+- (void)switchView 
+{
     LOG_CURRENT_METHOD;
     
     MoreViewController *tmvc = [[MoreViewController alloc] initWithNibName:@"MoreView" bundle:nil];
@@ -371,7 +408,8 @@
 	[animation setDuration:0.85];
 	[animation setType:kCATransitionReveal];
     
-    switch(self.switchViewTo) {
+    switch(self.switchViewTo) 
+    {
         case 1:
             [theWindow addSubview:[movc view]];
             [animation setSubtype:kCATransitionFromBottom];

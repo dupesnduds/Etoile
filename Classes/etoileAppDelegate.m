@@ -2,9 +2,10 @@
 //  etoileAppDelegate.m
 //  etoile
 //
-//  Created by mtt on 7/06/09.
-//  Copyright Make Things Talk 2009. All rights reserved.
+//  Created by Cleave Pokotea on 7/06/09.
+//  Copyright Tumunu 2009 - 2011. All rights reserved.
 //
+
 
 #import "etoileAppDelegate.h"
 #import "MainViewController.h"
@@ -18,19 +19,21 @@
 @synthesize lblMessage;
 @synthesize fontSize;
 
-+(etoileAppDelegate *) get {
-    
+
++(etoileAppDelegate *) get 
+{
     return (etoileAppDelegate *) [[UIApplication sharedApplication] delegate];
 }
 
-- (void)dealloc {
+- (void)dealloc 
+{
     [mainViewController release];
     [window release];
     [super dealloc];
 }
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-
+- (void)applicationDidFinishLaunching:(UIApplication *)application 
+{
 	MainViewController *aController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
 	self.mainViewController = aController;
 	[aController release];
@@ -56,10 +59,11 @@ int play_message( char* msg_file, char* msg )
 }
 */
 
-- (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration {
-    
+- (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration 
+{
     // This prevents the view from autorotating to portrait in the simulator
-    if ((newStatusBarOrientation == UIInterfaceOrientationPortrait) || (newStatusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) {
+    if ((newStatusBarOrientation == UIInterfaceOrientationPortrait) || (newStatusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) 
+    {
         [application setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
     }
 }

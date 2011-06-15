@@ -2,9 +2,10 @@
 //  ScrollViewController.m
 //  etoile
 //
-//  Created by mtt on 8/06/09.
+//  Created by Cleave Pokotea on 8/06/09.
 //  Copyright 2009 Make Things Talk. All rights reserved.
 //
+
 
 #import "ScrollViewController.h"
 #import "etoileAppDelegate.h"
@@ -24,14 +25,17 @@
 @synthesize switchViewTo;
 //@synthesize animation;
 
-- (void)dealloc {
-    
-    if(mavc) {
+
+- (void)dealloc 
+{
+    if(mavc) 
+    {
         [mavc release];
         mavc=nil;
     }
     
-    if(scrollViewObj) {
+    if(scrollViewObj)
+    {
         [scrollViewObj release];   
         scrollViewObj = nil;
     }
@@ -40,7 +44,8 @@
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
+- (void)viewDidLoad 
+{
     [super viewDidLoad];
     
     [self setBackground];
@@ -48,20 +53,23 @@
 }
 
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+{
     // Return YES for supported orientations
     //return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
     return NO;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning 
+{
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewWillAppear:(BOOL)animated; {
+- (void)viewWillAppear:(BOOL)animated; 
+{
     // First rotate the screen:
     [UIApplication sharedApplication].statusBarOrientation = UIInterfaceOrientationLandscapeLeft;
     // Then rotate the view and re-align it:
@@ -70,18 +78,16 @@
     [self.view setTransform:landscapeTransform];
 }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
+- (void)viewDidUnload {}
 
-- (void)showMain {
-    
+- (void)showMain 
+{
     self.switchViewTo = 1;
     [self switchView];
 }
 
-- (void)setBackground {
+- (void)setBackground 
+{
 	LOG_CURRENT_METHOD;
     
     // Title bar
@@ -100,14 +106,16 @@
 	[self.view sendSubviewToBack:background];
 }
 
-- (void)setSubviewItems {
+- (void)setSubviewItems 
+{
     LOG_CURRENT_METHOD;
     
     [self setButtons];
     [self setScrollView];
 }
 
-- (void)setButtons {
+- (void)setButtons 
+{
     LOG_CURRENT_METHOD;
     
     // Main
@@ -119,7 +127,8 @@
     [btnMain setEnabled:YES];
 }
 
-- (void)setScrollView {
+- (void)setScrollView 
+{
     LOG_CURRENT_METHOD;
     
     lblMessage = [[UILabel alloc] initWithFrame:CGRectMake(0, 51, 480, 249)];
@@ -186,12 +195,14 @@
      */
 }
 
--(void)xxx{
+-(void)xxx
+{
     LOG(@"Speed: %.2f",sliderSpeed.value);
     //[animation setDuration: sliderSpeed.value];
 }
 
-- (void)switchView {
+- (void)switchView 
+{
     LOG_CURRENT_METHOD;
     
     MainViewController *tmvc = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
@@ -209,7 +220,8 @@
 	[animation setDuration:0.85];
 	[animation setType:kCATransitionReveal];
     
-    switch(self.switchViewTo) {
+    switch(self.switchViewTo) 
+    {
         case 1:
             [animation setSubtype:kCATransitionFromTop];
             [theWindow addSubview:[mavc view]];

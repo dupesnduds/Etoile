@@ -2,8 +2,8 @@
 //  main.m
 //  etoile
 //
-//  Created by mtt on 7/06/09.
-//  Copyright Make Things Talk 2009. All rights reserved.
+//  Created by Cleave Pokotea on 7/06/09.
+//  Copyright Tumunu 2009 - 2011. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
